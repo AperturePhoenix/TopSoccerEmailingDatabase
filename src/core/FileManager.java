@@ -30,7 +30,7 @@ public class FileManager {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Could not load contacts", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Could not load " + fileName, "Error", JOptionPane.ERROR_MESSAGE);
         }
         return input;
     }
@@ -50,7 +50,7 @@ public class FileManager {
             out.close();
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Could not save contacts", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(JOptionPane.getRootFrame(), "Could not save " + fileName, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
