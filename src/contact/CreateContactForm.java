@@ -1,6 +1,7 @@
 package contact;
 
 import core.CyclingSpinnerListModel;
+import core.ListManager;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
@@ -16,7 +17,7 @@ import java.util.Date;
  */
 public class CreateContactForm implements ActionListener{
     //Instance variables
-    private ContactManager manager;
+    private ListManager<Contact> manager;
 
     //JComponents
     private JPanel contentPane;
@@ -49,7 +50,7 @@ public class CreateContactForm implements ActionListener{
         }
     }
 
-    public CreateContactForm(ContactManager manager) {
+    public CreateContactForm(ListManager<Contact> manager) {
         //Initialization
         this.manager = manager;
 
@@ -69,10 +70,10 @@ public class CreateContactForm implements ActionListener{
         frame.setVisible(true);
     }
 
-    //Adds the contact to the ContactManager and closes the window
+    //Adds the contact to the manager and closes the window
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        manager.addContact(new Contact(nameField.getText(), (String)genderSpinner.getValue(),
+        manager.add(new Contact(nameField.getText(), (String)genderSpinner.getValue(),
                 (Date)birthdaySpinner.getValue(), emailField.getText(), mobileField.getText(),
                 homeField.getText(), addressArea.getText()));
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));

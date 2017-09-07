@@ -1,6 +1,7 @@
 package contact;
 
 import core.CyclingSpinnerListModel;
+import core.ListManager;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -13,10 +14,10 @@ import java.util.Date;
 /**
  * Created by Lance Judan on 9/3/17
  */
-public class ContactPanel {
+public class ContactPanel implements ListManager.ListPanel{
     //Instance variables
     private Contact currentContact;
-    private ContactManager contactManager;
+    private ListManager<Contact> contactManager;
     private DefaultListModel<Contact> contactModel;
     private CyclingSpinnerListModel genderModel;
     private SpinnerDateModel dateModel;
@@ -62,7 +63,7 @@ public class ContactPanel {
 
     public ContactPanel() {
         //Initialization
-        contactManager = new ContactManager(this);
+        contactManager = new ListManager<Contact>(this, "contacts.dat", Contact::generateAge);
         ChangeListener changeListener = new ChangeListener();
 
         //Add listeners
@@ -74,7 +75,7 @@ public class ContactPanel {
         searchField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent keyEvent) {
-                contactManager.searchContact(searchField.getText());
+                contactManager.search((contact) -> !contact.toString().contains(searchField.getText()) && !contact.toString().contains(searchField.getText()));
             }
         });
 
@@ -85,7 +86,7 @@ public class ContactPanel {
         //Buttons
         createContactButton.addActionListener((actionEvent -> new CreateContactForm(contactManager)));
         editContactButton.addActionListener(actionEvent -> setContactInfo());
-        deleteContactButton.addActionListener(actionEvent -> contactManager.removeContact(contactList.getSelectedValue()));
+        deleteContactButton.addActionListener(actionEvent -> contactManager.remove(contactList.getSelectedValue()));
 
         //Lists
         contactList.addListSelectionListener(listSelectionEvent -> {
@@ -153,7 +154,7 @@ public class ContactPanel {
         return contactPanel;
     }
 
-    public DefaultListModel<Contact> getContactModel() {
+    public DefaultListModel<Contact> getModel() {
         return contactModel;
     }
 
