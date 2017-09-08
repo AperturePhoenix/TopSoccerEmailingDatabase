@@ -1,1 +1,1 @@
-# Top Soccer Emailing Databse
+# Top Soccer Emailing Database
