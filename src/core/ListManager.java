@@ -58,7 +58,9 @@ public class ListManager<T extends Comparable<? super T>>{
     //Adds and removes objects from JList based on search term
     public void search(Predicate<T> searchPredicate) {
         DefaultListModel<T> model = panel.getModel();
-        //Ensures that all objects are in JList
+        arrayList.forEach(object -> {
+            if (!model.contains(object)) model.add(findInsertionPoint(object), object);
+        });
         if (searchPredicate == null) return;
         //Creates an ArrayList of contacts to be removed from JList
         ArrayList<T> removalList = (ArrayList<T>) arrayList
