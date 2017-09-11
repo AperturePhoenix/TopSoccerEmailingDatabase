@@ -44,7 +44,7 @@ public class CategoryPanel implements ListManager.ListPanel {
         });
 
         //Buttons
-        createCategoryButton.addActionListener(actionEvent -> new CreateCategoryForm(null, categoryManager, contactManager));
+        createCategoryButton.addActionListener(actionEvent -> new CreateCategoryForm(null, this));
         editCategoryButton.addActionListener(actionEvent -> setCategoryInfo());
         deleteCategoryButton.addActionListener(actionEvent -> {
             contactManager.getArrayList().forEach(contact -> contact.removeCategory(categoryList.getSelectedValue()));
@@ -71,11 +71,10 @@ public class CategoryPanel implements ListManager.ListPanel {
     }
 
     private void setCategoryInfo() {
-        new CreateCategoryForm(currentCategory, categoryManager, contactManager);
-        setContactList();
+        CreateCategoryForm categoryForm = new CreateCategoryForm(currentCategory, this);
     }
 
-    private void setContactList() {
+    public void setContactList() {
         contactModel.removeAllElements();
         ArrayList<Contact> addList = (ArrayList<Contact>) contactManager.getArrayList()
                 .stream()
@@ -88,11 +87,19 @@ public class CategoryPanel implements ListManager.ListPanel {
         categoryManager.save();
     }
 
+    public DefaultListModel<String> getModel() {
+        return categoryModel;
+    }
+
     public JPanel getPanel() {
         return categoryPanel;
     }
 
-    public DefaultListModel<String> getModel() {
-        return categoryModel;
+    public ListManager<Contact> getContactManager() {
+        return contactManager;
+    }
+
+    public ListManager<String> getCategoryManager() {
+        return categoryManager;
     }
 }

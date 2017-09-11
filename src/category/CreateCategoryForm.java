@@ -12,8 +12,13 @@ import java.util.ArrayList;
 
 public class CreateCategoryForm implements ActionListener{
     //Instance variables
+    private CategoryPanel panel;
+    private ListManager<Contact> contactManager;
     private ListManager<String> manager;
     private DefaultListModel<Contact> contactModel;
+
+    //One-way flag
+    private boolean isDone = false;
 
     //JComponents
     private JTextField categoryField;
@@ -22,10 +27,13 @@ public class CreateCategoryForm implements ActionListener{
     private JPanel contentPane;
     private JFrame frame;
 
-    public CreateCategoryForm(String categoryName, ListManager<String> manager, ListManager<Contact> contactListManager) {
+    public CreateCategoryForm(String categoryName, CategoryPanel panel) {
+        //Initialize
         categoryField.setText(categoryName);
-        this.manager = manager;
-        ArrayList<Contact> contactArrayList = contactListManager.getArrayList();
+        this.panel = panel;
+        this.manager = panel.getCategoryManager();
+        this.contactManager = panel.getContactManager();
+        ArrayList<Contact> contactArrayList = contactManager.getArrayList();
         ArrayList<Integer> selectionIndices = new ArrayList<>();
         for (int i = 0; i < contactArrayList.size(); i++) {
             Contact contact = contactArrayList.get(i);
@@ -60,8 +68,10 @@ public class CreateCategoryForm implements ActionListener{
     //Adds the category to the manager and closes the window
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        manager.add(categoryField.getText());
+        if (!manager.getArrayList().contains(categoryField.getText())) manager.add(categoryField.getText());
+        contactManager.getArrayList().forEach(contact -> contact.removeCategory(categoryField.getText()));
         contactList.getSelectedValuesList().forEach(contact -> contact.addCategory(categoryField.getText()));
+        panel.setContactList();
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 
