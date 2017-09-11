@@ -1,5 +1,6 @@
 package category;
 
+import contact.Contact;
 import core.ListManager;
 
 import javax.swing.*;
@@ -11,16 +12,18 @@ import java.awt.event.WindowEvent;
 public class CreateCategoryForm implements ActionListener{
     //Instance variables
     private ListManager<String> manager;
+    private DefaultListModel<Contact> contactModel;
 
     //JComponents
     private JTextField categoryField;
-    private JList contactList;
+    private JList<Contact> contactList;
     private JButton createButton;
     private JPanel contentPane;
     private JFrame frame;
 
-    public CreateCategoryForm(ListManager<String> manager) {
+    public CreateCategoryForm(ListManager<String> manager, ListManager<Contact> contactListManager) {
         this.manager = manager;
+        contactListManager.getArrayList().forEach(contactModel::addElement);
 
         //Add listeners
         createButton.addActionListener(this);
@@ -38,6 +41,13 @@ public class CreateCategoryForm implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         manager.add(categoryField.getText());
+        contactList.getSelectedValuesList().forEach(contact -> contact.addCategory(categoryField.getText()));
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+    }
+
+    private void createUIComponents() {
+        contactModel = new DefaultListModel<>();
+        contactList = new JList<>(contactModel);
+        contactList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
     }
 }

@@ -34,7 +34,7 @@ public class TopSoccerForm {
     private TopSoccerForm() {
         //Initialization
         contactPanel = new ContactPanel();
-        categoryPanel = new CategoryPanel();
+        categoryPanel = new CategoryPanel(contactPanel.getContactManager());
 
         //Add panels
         tabbedPane.add("Contacts", contactPanel.getPanel());
@@ -54,6 +54,7 @@ public class TopSoccerForm {
             @Override
             public void windowClosing(WindowEvent windowEvent) {
                 contactPanel.saveContacts();
+                categoryPanel.saveCategories();
             }
 
             @Override

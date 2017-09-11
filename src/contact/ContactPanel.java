@@ -84,7 +84,7 @@ public class ContactPanel implements ListManager.ListPanel{
         birthdaySpinner.addChangeListener(changeListener);
 
         //Buttons
-        createContactButton.addActionListener((actionEvent -> new CreateContactForm(contactManager)));
+        createContactButton.addActionListener(actionEvent -> new CreateContactForm(contactManager));
         editContactButton.addActionListener(actionEvent -> setContactInfo());
         deleteContactButton.addActionListener(actionEvent -> contactManager.remove(contactList.getSelectedValue()));
 
@@ -144,6 +144,10 @@ public class ContactPanel implements ListManager.ListPanel{
             addressArea.setEnabled(false);
             deleteContactButton.setEnabled(false);
         }
+    }
+
+    public ListManager<Contact> getContactManager() {
+        return contactManager;
     }
 
     public void saveContacts() {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -14,6 +15,7 @@ public class Contact implements Serializable, Comparable<Contact> {
     private String name, gender, email, home, mobile, address;
     private Date birthday;
     private transient int age; //Transient because don't want to be included when saving
+    private ArrayList<String> categories;
 
     public Contact(String name, String gender, Date birthday, String email, String mobile, String home, String address) {
         this.name = name;
@@ -23,6 +25,7 @@ public class Contact implements Serializable, Comparable<Contact> {
         this.mobile = mobile;
         this.home = home;
         this.address = address;
+        categories = new ArrayList<>();
         generateAge();
     }
 
@@ -81,5 +84,17 @@ public class Contact implements Serializable, Comparable<Contact> {
     }
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void addCategory(String category) {
+        if (!categories.contains(category)) categories.add(category);
+    }
+
+    public boolean isInCategory(String category) {
+        return categories.contains(category);
+    }
+
+    public void removeCategory(String category) {
+        if (categories.contains(category)) categories.remove(category);
     }
 }

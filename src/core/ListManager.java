@@ -70,6 +70,10 @@ public class ListManager<T extends Comparable<? super T>>{
         });
     }
 
+    public ArrayList<T> getArrayList() {
+        return arrayList;
+    }
+
     public interface ListPanel {
         DefaultListModel getModel();
     }

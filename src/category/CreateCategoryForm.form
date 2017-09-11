@@ -59,7 +59,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="8c59e" class="javax.swing.JList" binding="contactList">
+          <component id="8c59e" class="javax.swing.JList" binding="contactList" custom-create="true">
             <constraints/>
             <properties/>
           </component>
