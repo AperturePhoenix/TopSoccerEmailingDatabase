@@ -17,9 +17,6 @@ public class CreateCategoryForm implements ActionListener{
     private ListManager<String> manager;
     private DefaultListModel<Contact> contactModel;
 
-    //One-way flag
-    private boolean isDone = false;
-
     //JComponents
     private JTextField categoryField;
     private JList<Contact> contactList;
