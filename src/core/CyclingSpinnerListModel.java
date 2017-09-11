@@ -3,17 +3,13 @@ package core;
 import javax.swing.*;
 
 public class CyclingSpinnerListModel extends SpinnerListModel{
-    Object firstValue, lastValue;
-    SpinnerModel linkedModel = null;
+    private Object firstValue, lastValue;
+    private SpinnerModel linkedModel = null;
 
     public CyclingSpinnerListModel(Object[] values) {
         super(values);
         firstValue = values[0];
         lastValue = values[values.length - 1];
-    }
-
-    public void setLinkedModel(SpinnerModel linkedModel) {
-        this.linkedModel = linkedModel;
     }
 
     public Object getNextValue() {

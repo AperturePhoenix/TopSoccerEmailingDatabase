@@ -37,6 +37,18 @@ public class Contact implements Serializable, Comparable<Contact> {
     public String toString() {
         return name;
     }
+
+    public void printInfo() {
+        System.out.println(toString());
+        System.out.println(gender);
+        System.out.println(age + "  " + birthday);
+        System.out.println(email);
+        System.out.println(mobile);
+        System.out.println(home);
+        System.out.println(address);
+        categories.forEach(System.out::println);
+        System.out.println();
+    }
     public String getGender() {
         return gender;
     }
@@ -46,18 +58,15 @@ public class Contact implements Serializable, Comparable<Contact> {
     public Date getBirthday() {
         return birthday;
     }
-
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
         generateAge();
     }
-
     public void generateAge() {
         LocalDate today = LocalDate.now();
         LocalDate birthday = this.birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         age = Period.between(birthday, today).getYears();
     }
-
     public int getAge() {
         return age;
     }
@@ -89,11 +98,9 @@ public class Contact implements Serializable, Comparable<Contact> {
     public void addCategory(String category) {
         if (!categories.contains(category)) categories.add(category);
     }
-
     public boolean isInCategory(String category) {
         return categories.contains(category);
     }
-
     public void removeCategory(String category) {
         if (categories.contains(category)) categories.remove(category);
     }

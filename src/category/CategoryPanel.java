@@ -31,7 +31,7 @@ public class CategoryPanel implements ListManager.ListPanel {
 
     public CategoryPanel(ListManager<Contact> contactManager) {
         //Initialization
-        categoryManager = new ListManager<String>(this, "categories.dat", null);
+        categoryManager = new ListManager<>(this, "categories.dat", null);
         this.contactManager = contactManager;
 
         //Add listeners
@@ -44,9 +44,12 @@ public class CategoryPanel implements ListManager.ListPanel {
         });
 
         //Buttons
-        createCategoryButton.addActionListener(actionEvent -> new CreateCategoryForm(categoryManager, contactManager));
+        createCategoryButton.addActionListener(actionEvent -> new CreateCategoryForm(null, categoryManager, contactManager));
         editCategoryButton.addActionListener(actionEvent -> setCategoryInfo());
-        deleteCategoryButton.addActionListener(actionEvent -> categoryManager.remove(categoryList.getSelectedValue()));
+        deleteCategoryButton.addActionListener(actionEvent -> {
+            contactManager.getArrayList().forEach(contact -> contact.removeCategory(categoryList.getSelectedValue()));
+            categoryManager.remove(categoryList.getSelectedValue());
+        });
 
         //Lists
         categoryList.addListSelectionListener(listSelectionEvent -> {
@@ -68,7 +71,7 @@ public class CategoryPanel implements ListManager.ListPanel {
     }
 
     private void setCategoryInfo() {
-        //Todo setting contact categories
+        new CreateCategoryForm(currentCategory, categoryManager, contactManager);
         setContactList();
     }
 

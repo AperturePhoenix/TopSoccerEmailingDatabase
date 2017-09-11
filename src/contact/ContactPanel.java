@@ -63,7 +63,7 @@ public class ContactPanel implements ListManager.ListPanel{
 
     public ContactPanel() {
         //Initialization
-        contactManager = new ListManager<Contact>(this, "contacts.dat", Contact::generateAge);
+        contactManager = new ListManager<>(this, "contacts.dat", Contact::generateAge);
         ChangeListener changeListener = new ChangeListener();
 
         //Add listeners
