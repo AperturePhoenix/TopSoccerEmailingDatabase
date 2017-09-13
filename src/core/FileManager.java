@@ -75,7 +75,7 @@ class FileManager {
         Cipher cipher = null;
         try {
             cipher = Cipher.getInstance(algorithm);
-            switch(mode) {
+            switch (mode) {
                 case Cipher.ENCRYPT_MODE:
                     cipher.init(Cipher.ENCRYPT_MODE, key64);
                     break;

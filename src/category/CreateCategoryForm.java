@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 
-public class CreateCategoryForm implements ActionListener{
+public class CreateCategoryForm implements ActionListener {
     //Instance variables
     private CategoryPanel panel;
     private ListManager<Contact> contactManager;

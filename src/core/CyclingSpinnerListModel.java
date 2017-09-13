@@ -2,7 +2,7 @@ package core;
 
 import javax.swing.*;
 
-public class CyclingSpinnerListModel extends SpinnerListModel{
+public class CyclingSpinnerListModel extends SpinnerListModel {
     private Object firstValue, lastValue;
     private SpinnerModel linkedModel = null;
 

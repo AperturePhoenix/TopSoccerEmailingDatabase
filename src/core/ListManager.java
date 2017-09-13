@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Lance Judan on 9/6/17
  */
-public class ListManager<T extends Comparable<? super T>>{
+public class ListManager<T extends Comparable<? super T>> {
     //Instance variables
     private ArrayList<T> arrayList;
     private ListPanel panel;
@@ -25,7 +25,7 @@ public class ListManager<T extends Comparable<? super T>>{
 
     private void load(Consumer<T> loadConsumer) {
         Serializable input = FileManager.loadFile(fileName);
-        arrayList = input != null ? (ArrayList<T>)input : new ArrayList<>();
+        arrayList = input != null ? (ArrayList<T>) input : new ArrayList<>();
         if (!arrayList.isEmpty()) arrayList.sort(T::compareTo);
         arrayList.forEach(object -> {
             if (loadConsumer != null) loadConsumer.accept(object);

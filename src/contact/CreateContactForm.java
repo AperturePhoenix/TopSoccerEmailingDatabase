@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * Created by Lance Judan on 8/23/17
  */
-public class CreateContactForm implements ActionListener{
+public class CreateContactForm implements ActionListener {
     //Instance variables
     private ListManager<Contact> manager;
 
@@ -30,25 +30,6 @@ public class CreateContactForm implements ActionListener{
     private JFormattedTextField mobileField;
     private JFormattedTextField homeField;
     private JTextArea addressArea;
-
-    private void createUIComponents() {
-        //Gender spinner
-        CyclingSpinnerListModel genderModel = new CyclingSpinnerListModel(new String[] {"Male", "Female"});
-        genderSpinner = new JSpinner(genderModel);
-
-        //Birthday spinner
-        SpinnerDateModel dateModel = new SpinnerDateModel();
-        birthdaySpinner = new JSpinner(dateModel);
-        birthdaySpinner.setEditor(new JSpinner.DateEditor(birthdaySpinner, "MM/dd/yyyy"));
-
-        //Mobile and Home fields
-        try {
-            mobileField = new JFormattedTextField(new MaskFormatter("###-###-####"));
-            homeField = new JFormattedTextField(new MaskFormatter("###-###-####"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
 
     CreateContactForm(ListManager<Contact> manager) {
         //Initialization
@@ -70,11 +51,30 @@ public class CreateContactForm implements ActionListener{
         frame.setVisible(true);
     }
 
+    private void createUIComponents() {
+        //Gender spinner
+        CyclingSpinnerListModel genderModel = new CyclingSpinnerListModel(new String[]{"Male", "Female"});
+        genderSpinner = new JSpinner(genderModel);
+
+        //Birthday spinner
+        SpinnerDateModel dateModel = new SpinnerDateModel();
+        birthdaySpinner = new JSpinner(dateModel);
+        birthdaySpinner.setEditor(new JSpinner.DateEditor(birthdaySpinner, "MM/dd/yyyy"));
+
+        //Mobile and Home fields
+        try {
+            mobileField = new JFormattedTextField(new MaskFormatter("###-###-####"));
+            homeField = new JFormattedTextField(new MaskFormatter("###-###-####"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     //Adds the contact to the manager and closes the window
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        manager.add(new Contact(nameField.getText(), (String)genderSpinner.getValue(),
-                (Date)birthdaySpinner.getValue(), emailField.getText(), mobileField.getText(),
+        manager.add(new Contact(nameField.getText(), (String) genderSpinner.getValue(),
+                (Date) birthdaySpinner.getValue(), emailField.getText(), mobileField.getText(),
                 homeField.getText(), addressArea.getText()));
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }

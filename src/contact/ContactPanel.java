@@ -14,7 +14,7 @@ import java.util.Date;
 /**
  * Created by Lance Judan on 9/3/17
  */
-public class ContactPanel implements ListManager.ListPanel{
+public class ContactPanel implements ListManager.ListPanel {
     //Instance variables
     private Contact currentContact;
     private ListManager<Contact> contactManager;
@@ -36,30 +36,6 @@ public class ContactPanel implements ListManager.ListPanel{
     private JTextField searchField;
     private JButton createContactButton;
     private JList<Contact> contactList;
-
-    private void createUIComponents() {
-        //Contact list
-        contactModel = new DefaultListModel<>();
-        contactList = new JList<>(contactModel);
-        contactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        //Gender spinner
-        genderModel = new CyclingSpinnerListModel(new String[] {"Male", "Female"});
-        genderSpinner = new JSpinner(genderModel);
-
-        //Birthday spinner
-        dateModel = new SpinnerDateModel();
-        birthdaySpinner = new JSpinner(dateModel);
-        birthdaySpinner.setEditor(new JSpinner.DateEditor(birthdaySpinner, "MM/dd/yyyy"));
-
-        //Mobile and Home fields
-        try {
-            mobileField = new JFormattedTextField(new MaskFormatter("###-###-####"));
-            homeField = new JFormattedTextField(new MaskFormatter("###-###-####"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
 
     public ContactPanel() {
         //Initialization
@@ -95,9 +71,33 @@ public class ContactPanel implements ListManager.ListPanel{
         });
     }
 
+    private void createUIComponents() {
+        //Contact list
+        contactModel = new DefaultListModel<>();
+        contactList = new JList<>(contactModel);
+        contactList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        //Gender spinner
+        genderModel = new CyclingSpinnerListModel(new String[]{"Male", "Female"});
+        genderSpinner = new JSpinner(genderModel);
+
+        //Birthday spinner
+        dateModel = new SpinnerDateModel();
+        birthdaySpinner = new JSpinner(dateModel);
+        birthdaySpinner.setEditor(new JSpinner.DateEditor(birthdaySpinner, "MM/dd/yyyy"));
+
+        //Mobile and Home fields
+        try {
+            mobileField = new JFormattedTextField(new MaskFormatter("###-###-####"));
+            homeField = new JFormattedTextField(new MaskFormatter("###-###-####"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void setContactInfo() {
-        currentContact.setGender((String)genderModel.getValue());
-        currentContact.setBirthday((Date)dateModel.getValue());
+        currentContact.setGender((String) genderModel.getValue());
+        currentContact.setBirthday((Date) dateModel.getValue());
         currentContact.setEmail(emailField.getText());
         currentContact.setMobile(mobileField.getText());
         currentContact.setHome(homeField.getText());
@@ -127,8 +127,7 @@ public class ContactPanel implements ListManager.ListPanel{
             addressArea.setEnabled(true);
             editContactButton.setEnabled(false);
             deleteContactButton.setEnabled(true);
-        }
-        catch (NullPointerException e) {
+        } catch (NullPointerException e) {
             nameLabel.setText("Name");
             emailField.setText(null);
             mobileField.setText(null);

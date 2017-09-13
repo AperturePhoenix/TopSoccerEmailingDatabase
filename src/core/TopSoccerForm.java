@@ -23,14 +23,6 @@ public class TopSoccerForm {
     private JPanel contentPane;
     private JTabbedPane tabbedPane;
 
-    private void createUIComponents() {
-        tabbedPane = new JTabbedPane();
-    }
-
-    public static void main(String[] args) {
-        new TopSoccerForm();
-    }
-
     private TopSoccerForm() {
         //Initialization
         contactPanel = new ContactPanel();
@@ -87,5 +79,13 @@ public class TopSoccerForm {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new TopSoccerForm();
+    }
+
+    private void createUIComponents() {
+        tabbedPane = new JTabbedPane();
     }
 }

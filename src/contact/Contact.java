@@ -71,9 +71,11 @@ public class Contact implements Serializable, Comparable<Contact> {
         LocalDate birthday = this.birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         age = Period.between(birthday, today).getYears();
     }
+
     public int getAge() {
         return age;
     }
+
     public String getEmail() {
         return email;
     }
@@ -81,6 +83,7 @@ public class Contact implements Serializable, Comparable<Contact> {
     void setEmail(String email) {
         this.email = email;
     }
+
     public String getHome() {
         return home;
     }
@@ -88,6 +91,7 @@ public class Contact implements Serializable, Comparable<Contact> {
     void setHome(String home) {
         this.home = home;
     }
+
     public String getMobile() {
         return mobile;
     }
@@ -95,6 +99,7 @@ public class Contact implements Serializable, Comparable<Contact> {
     void setMobile(String mobile) {
         this.mobile = mobile;
     }
+
     public String getAddress() {
         return address;
     }
@@ -106,9 +111,11 @@ public class Contact implements Serializable, Comparable<Contact> {
     public void addCategory(String category) {
         if (!categories.contains(category)) categories.add(category);
     }
+
     public boolean isInCategory(String category) {
         return categories.contains(category);
     }
+
     public void removeCategory(String category) {
         if (categories.contains(category)) categories.remove(category);
     }
