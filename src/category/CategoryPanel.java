@@ -28,6 +28,7 @@ public class CategoryPanel implements ListManager.ListPanel {
     private JButton editCategoryButton;
     private JButton deleteCategoryButton;
     private JTextField searchField;
+    private JButton emailButton;
 
     public CategoryPanel(ListManager<Contact> contactManager) {
         //Initialization
@@ -50,6 +51,10 @@ public class CategoryPanel implements ListManager.ListPanel {
             contactManager.getArrayList().forEach(contact -> contact.removeCategory(categoryList.getSelectedValue()));
             categoryManager.remove(categoryList.getSelectedValue());
         });
+        emailButton.addActionListener(actionEvent -> {
+            ArrayList<String> temp = (ArrayList<String>) categoryList.getSelectedValuesList();
+            if (!temp.isEmpty()) new EmailDialog(temp, contactManager.getArrayList());
+        });
 
         //Lists
         categoryList.addListSelectionListener(listSelectionEvent -> {
@@ -62,7 +67,7 @@ public class CategoryPanel implements ListManager.ListPanel {
         //Category list
         categoryModel = new DefaultListModel<>();
         categoryList = new JList<>(categoryModel);
-        categoryList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        categoryList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         //Contact list
         contactModel = new DefaultListModel<>();
