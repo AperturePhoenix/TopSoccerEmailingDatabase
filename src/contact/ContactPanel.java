@@ -51,7 +51,7 @@ public class ContactPanel implements ListManager.ListPanel {
         searchField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent keyEvent) {
-                contactManager.search((contact) -> !contact.toString().contains(searchField.getText()) && !contact.toString().contains(searchField.getText()));
+                contactManager.search((contact) -> !contact.toString().toUpperCase().contains(searchField.getText().toUpperCase()) && !contact.getEmail().toUpperCase().contains(searchField.getText().toUpperCase()));
             }
         });
 

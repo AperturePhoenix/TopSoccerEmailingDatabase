@@ -40,7 +40,7 @@ public class CategoryPanel implements ListManager.ListPanel {
         searchField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                categoryManager.search((category) -> !category.contains(searchField.getText()));
+                categoryManager.search((category) -> !category.toUpperCase().contains(searchField.getText().toUpperCase()));
             }
         });
 
