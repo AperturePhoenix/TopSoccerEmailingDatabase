@@ -73,6 +73,13 @@ public class CategoryPanel implements ListManager.ListPanel {
         contactModel = new DefaultListModel<>();
         contactList = new JList<>(contactModel);
         contactList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
+        //Edit button
+        deleteCategoryButton = new JButton("Delete");
+        editCategoryButton = new JButton("Edit");
+        editCategoryButton.setMinimumSize(deleteCategoryButton.getPreferredSize());
+        editCategoryButton.setPreferredSize(deleteCategoryButton.getPreferredSize());
+        editCategoryButton.setMaximumSize(deleteCategoryButton.getPreferredSize());
     }
 
     private void setCategoryInfo() {

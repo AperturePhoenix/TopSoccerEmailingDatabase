@@ -97,7 +97,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="8b2a0" class="javax.swing.JButton" binding="editCategoryButton">
+          <component id="8b2a0" class="javax.swing.JButton" binding="editCategoryButton" custom-create="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="75" height="-1"/>
@@ -110,13 +110,9 @@
               <toolTipText value="Send a message to this group"/>
             </properties>
           </component>
-          <component id="5c70f" class="javax.swing.JButton" binding="deleteCategoryButton">
+          <component id="5c70f" class="javax.swing.JButton" binding="deleteCategoryButton" custom-create="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="75" height="-1"/>
-                <preferred-size width="75" height="-1"/>
-                <maximum-size width="75" height="-1"/>
-              </grid>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <text value="Delete"/>

@@ -197,7 +197,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="1c185" class="javax.swing.JButton" binding="editContactButton">
+          <component id="1c185" class="javax.swing.JButton" binding="editContactButton" custom-create="true">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
                 <minimum-size width="75" height="-1"/>
@@ -210,13 +210,9 @@
               <text value="Save"/>
             </properties>
           </component>
-          <component id="d64f6" class="javax.swing.JButton" binding="deleteContactButton">
+          <component id="d64f6" class="javax.swing.JButton" binding="deleteContactButton" custom-create="true">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
-                <minimum-size width="75" height="-1"/>
-                <preferred-size width="75" height="-1"/>
-                <maximum-size width="75" height="-1"/>
-              </grid>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <enabled value="false"/>

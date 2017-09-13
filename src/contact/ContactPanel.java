@@ -93,6 +93,13 @@ public class ContactPanel implements ListManager.ListPanel {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        //Edit button
+        deleteContactButton = new JButton("Delete");
+        editContactButton = new JButton();
+        editContactButton.setMaximumSize(deleteContactButton.getPreferredSize());
+        editContactButton.setPreferredSize(deleteContactButton.getPreferredSize());
+        editContactButton.setMinimumSize(deleteContactButton.getPreferredSize());
     }
 
     private void setContactInfo() {
