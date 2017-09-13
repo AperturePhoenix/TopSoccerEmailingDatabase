@@ -76,10 +76,10 @@ public class CategoryPanel implements ListManager.ListPanel {
     }
 
     private void setCategoryInfo() {
-        CreateCategoryForm categoryForm = new CreateCategoryForm(currentCategory, this);
+        new CreateCategoryForm(currentCategory, this);
     }
 
-    public void setContactList() {
+    void setContactList() {
         contactModel.removeAllElements();
         ArrayList<Contact> addList = (ArrayList<Contact>) contactManager.getArrayList()
                 .stream()
@@ -100,11 +100,11 @@ public class CategoryPanel implements ListManager.ListPanel {
         return categoryPanel;
     }
 
-    public ListManager<Contact> getContactManager() {
+    ListManager<Contact> getContactManager() {
         return contactManager;
     }
 
-    public ListManager<String> getCategoryManager() {
+    ListManager<String> getCategoryManager() {
         return categoryManager;
     }
 }

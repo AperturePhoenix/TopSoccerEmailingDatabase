@@ -26,7 +26,7 @@ public class EmailDialog extends JDialog {
     private JLabel typesLabel;
     private JCheckBox allContactsCheckBox;
 
-    public EmailDialog(ArrayList<String> categories, ArrayList<Contact> contacts) {
+    EmailDialog(ArrayList<String> categories, ArrayList<Contact> contacts) {
         //Initialization
         this.categories = categories;
         this.contacts = contacts;
@@ -70,25 +70,21 @@ public class EmailDialog extends JDialog {
         setVisible(true);
     }
 
-    public String[] run() {
-        return null;
-    }
-
     private void setDisplayTextArea() {
         typesLabel.setText(currentType.toString());
-        String displayTemp = "";
+        StringBuilder displayTemp = new StringBuilder();
         for (Contact tempContact : contacts) {
             for (String tempCategory : categories) {
                 if (tempContact.isInCategory(tempCategory) || allContactsCheckBox.isSelected()) {
                     if (ageCheckBox.isSelected()) {
                         if (isWithinAgeRange(tempContact))
-                            displayTemp += getInfo(tempContact) + "\n";
-                    } else displayTemp += getInfo(tempContact) + "\n";
+                            displayTemp.append(getInfo(tempContact)).append("\n");
+                    } else displayTemp.append(getInfo(tempContact)).append("\n");
                     break;
                 }
             }
         }
-        displayTextArea.setText(displayTemp);
+        displayTextArea.setText(displayTemp.toString());
     }
 
     private String getInfo(Contact contact) {

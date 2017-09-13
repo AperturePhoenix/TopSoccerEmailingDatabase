@@ -10,12 +10,12 @@ import java.security.NoSuchAlgorithmException;
 /**
  * Created by Lance Judan on 9/5/2017.
  */
-public class FileManager {
+class FileManager {
     private static byte[] key = {0x01, 0x25, 0x13, 0x71, 0x03};
     private static String algorithm = "Blowfish";
     private static SecretKey key64 = new SecretKeySpec(key, algorithm);
 
-    public static Serializable loadFile(String fileName) {
+    static Serializable loadFile(String fileName) {
         String path = getFilePath(fileName);
         Serializable input = null;
         try {
@@ -35,7 +35,7 @@ public class FileManager {
         return input;
     }
 
-    public static void saveFile(Serializable object, String fileName) {
+    static void saveFile(Serializable object, String fileName) {
         File tempFolder = new File(getFolderPath());
         try {
             //Makes sure "Top Soccer Database" folder exists before saving

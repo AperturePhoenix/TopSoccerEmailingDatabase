@@ -50,7 +50,7 @@ public class CreateContactForm implements ActionListener{
         }
     }
 
-    public CreateContactForm(ListManager<Contact> manager) {
+    CreateContactForm(ListManager<Contact> manager) {
         //Initialization
         this.manager = manager;
 

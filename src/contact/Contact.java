@@ -38,7 +38,7 @@ public class Contact implements Serializable, Comparable<Contact> {
         return name;
     }
 
-    public void printInfo() {
+    /*public void printInfo() {
         System.out.println(toString());
         System.out.println(gender);
         System.out.println(age + "  " + birthday);
@@ -48,21 +48,25 @@ public class Contact implements Serializable, Comparable<Contact> {
         System.out.println(address);
         categories.forEach(System.out::println);
         System.out.println();
-    }
-    public String getGender() {
+    }*/
+    String getGender() {
         return gender;
     }
-    public void setGender(String gender) {
+
+    void setGender(String gender) {
         this.gender = gender;
     }
-    public Date getBirthday() {
+
+    Date getBirthday() {
         return birthday;
     }
-    public void setBirthday(Date birthday) {
+
+    void setBirthday(Date birthday) {
         this.birthday = birthday;
         generateAge();
     }
-    public void generateAge() {
+
+    void generateAge() {
         LocalDate today = LocalDate.now();
         LocalDate birthday = this.birthday.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         age = Period.between(birthday, today).getYears();
@@ -73,25 +77,29 @@ public class Contact implements Serializable, Comparable<Contact> {
     public String getEmail() {
         return email;
     }
-    public void setEmail(String email) {
+
+    void setEmail(String email) {
         this.email = email;
     }
     public String getHome() {
         return home;
     }
-    public void setHome(String home) {
+
+    void setHome(String home) {
         this.home = home;
     }
     public String getMobile() {
         return mobile;
     }
-    public void setMobile(String mobile) {
+
+    void setMobile(String mobile) {
         this.mobile = mobile;
     }
     public String getAddress() {
         return address;
     }
-    public void setAddress(String address) {
+
+    void setAddress(String address) {
         this.address = address;
     }
 

@@ -25,7 +25,7 @@ public class CreateCategoryForm implements ActionListener{
     private JPanel contentPane;
     private JFrame frame;
 
-    public CreateCategoryForm(String categoryName, CategoryPanel panel) {
+    CreateCategoryForm(String categoryName, CategoryPanel panel) {
         //Initialize
         categoryField.setText(categoryName);
         this.panel = panel;
