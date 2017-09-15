@@ -106,19 +106,19 @@ public class Contact implements Serializable, Comparable<Contact> {
         return address;
     }
 
-    public String getMother() {
+    String getMother() {
         return mother;
     }
 
-    public void setMother(String mother) {
+    void setMother(String mother) {
         this.mother = mother;
     }
 
-    public String getFather() {
+    String getFather() {
         return father;
     }
 
-    public void setFather(String father) {
+    void setFather(String father) {
         this.father = father;
     }
 

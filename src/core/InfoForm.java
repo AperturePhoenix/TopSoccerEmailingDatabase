@@ -7,7 +7,6 @@ import javax.swing.*;
  */
 public class InfoForm {
     private JPanel contentPane;
-    private JTextArea contactTabSearchingFirstTextArea;
 
     public JPanel getContentPanel() {
         return contentPane;

@@ -24,7 +24,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="40416" class="javax.swing.JTextArea" binding="contactTabSearchingFirstTextArea" default-binding="true">
+          <component id="40416" class="javax.swing.JTextArea" default-binding="true">
             <constraints/>
             <properties>
               <editable value="false"/>
