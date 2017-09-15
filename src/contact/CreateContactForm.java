@@ -30,6 +30,8 @@ public class CreateContactForm implements ActionListener {
     private JFormattedTextField mobileField;
     private JFormattedTextField homeField;
     private JTextArea addressArea;
+    private JTextField motherField;
+    private JTextField fatherField;
 
     CreateContactForm(ListManager<Contact> manager) {
         //Initialization
@@ -40,12 +42,14 @@ public class CreateContactForm implements ActionListener {
         emailField.addActionListener(this);
         mobileField.addActionListener(this);
         homeField.addActionListener(this);
+        motherField.addActionListener(this);
+        fatherField.addActionListener(this);
         createButton.addActionListener(this);
 
         //Create window
         frame = new JFrame("Create Contact");
         frame.setContentPane(contentPane);
-        frame.setPreferredSize(new Dimension(300, 275));
+        frame.setPreferredSize(new Dimension(300, 310));
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -75,7 +79,8 @@ public class CreateContactForm implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         manager.add(new Contact(nameField.getText(), (String) genderSpinner.getValue(),
                 (Date) birthdaySpinner.getValue(), emailField.getText(), mobileField.getText(),
-                homeField.getText(), addressArea.getText()));
+                homeField.getText(), motherField.getText(), fatherField.getText(),
+                addressArea.getText()));
         frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
     }
 }

@@ -12,18 +12,20 @@ import java.util.Date;
  */
 public class Contact implements Serializable, Comparable<Contact> {
     //Instance variables
-    private String name, gender, email, home, mobile, address;
+    private String name, gender, email, home, mobile, mother, father, address;
     private Date birthday;
     private transient int age; //Transient because don't want to be included when saving
     private ArrayList<String> categories;
 
-    public Contact(String name, String gender, Date birthday, String email, String mobile, String home, String address) {
+    public Contact(String name, String gender, Date birthday, String email, String mobile, String home, String mother, String father, String address) {
         this.name = name;
         this.gender = gender;
         this.birthday = birthday;
         this.email = email;
         this.mobile = mobile;
         this.home = home;
+        this.mother = mother;
+        this.father = father;
         this.address = address;
         categories = new ArrayList<>();
         generateAge();
@@ -102,6 +104,22 @@ public class Contact implements Serializable, Comparable<Contact> {
 
     public String getAddress() {
         return address;
+    }
+
+    public String getMother() {
+        return mother;
+    }
+
+    public void setMother(String mother) {
+        this.mother = mother;
+    }
+
+    public String getFather() {
+        return father;
+    }
+
+    public void setFather(String father) {
+        this.father = father;
     }
 
     void setAddress(String address) {

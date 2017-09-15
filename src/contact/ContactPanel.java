@@ -36,6 +36,8 @@ public class ContactPanel implements ListManager.ListPanel {
     private JTextField searchField;
     private JButton createContactButton;
     private JList<Contact> contactList;
+    private JTextField motherField;
+    private JTextField fatherField;
 
     public ContactPanel() {
         //Initialization
@@ -47,6 +49,8 @@ public class ContactPanel implements ListManager.ListPanel {
         emailField.addKeyListener(changeListener);
         mobileField.addKeyListener(changeListener);
         homeField.addKeyListener(changeListener);
+        motherField.addKeyListener(changeListener);
+        fatherField.addKeyListener(changeListener);
         addressArea.addKeyListener(changeListener);
         searchField.addKeyListener(new KeyAdapter() {
             @Override
@@ -108,6 +112,8 @@ public class ContactPanel implements ListManager.ListPanel {
         currentContact.setEmail(emailField.getText());
         currentContact.setMobile(mobileField.getText());
         currentContact.setHome(homeField.getText());
+        currentContact.setMother(motherField.getText());
+        currentContact.setFather(fatherField.getText());
         currentContact.setAddress(addressArea.getText());
         editContactButton.setEnabled(false);
         setContactDescriptions();
@@ -123,6 +129,8 @@ public class ContactPanel implements ListManager.ListPanel {
             else mobileField.setText(null);
             if (!currentContact.getHome().equals("   -   -    ")) homeField.setText(currentContact.getHome());
             else homeField.setText(null);
+            motherField.setText(currentContact.getMother());
+            fatherField.setText(currentContact.getFather());
             addressArea.setText(currentContact.getAddress());
 
             //Enable components to be edited
@@ -131,6 +139,8 @@ public class ContactPanel implements ListManager.ListPanel {
             emailField.setEnabled(true);
             mobileField.setEnabled(true);
             homeField.setEnabled(true);
+            motherField.setEnabled(true);
+            fatherField.setEnabled(true);
             addressArea.setEnabled(true);
             editContactButton.setEnabled(false);
             deleteContactButton.setEnabled(true);
@@ -139,6 +149,8 @@ public class ContactPanel implements ListManager.ListPanel {
             emailField.setText(null);
             mobileField.setText(null);
             homeField.setText(null);
+            motherField.setText(null);
+            fatherField.setText(null);
             addressArea.setText(null);
 
             //Disable components to be edited
@@ -147,6 +159,8 @@ public class ContactPanel implements ListManager.ListPanel {
             emailField.setEnabled(false);
             mobileField.setEnabled(false);
             homeField.setEnabled(false);
+            motherField.setEnabled(false);
+            fatherField.setEnabled(false);
             addressArea.setEnabled(false);
             deleteContactButton.setEnabled(false);
         }
@@ -194,8 +208,10 @@ public class ContactPanel implements ListManager.ListPanel {
             boolean emailTest = emailField.getText().equals(currentContact.getEmail());
             boolean mobileTest = mobileField.getText().equals(currentContact.getMobile());
             boolean homeTest = homeField.getText().equals(currentContact.getHome());
+            boolean motherTest = motherField.getText().equals(currentContact.getMother());
+            boolean fatherTest = fatherField.getText().equals(currentContact.getFather());
             boolean addressTest = addressArea.getText().equals(currentContact.getAddress());
-            return genderTest && birthdayTest && emailTest && mobileTest && homeTest && addressTest;
+            return genderTest && birthdayTest && emailTest && mobileTest && homeTest && motherTest && fatherTest && addressTest;
         }
     }
 }

@@ -4,6 +4,10 @@ import contact.Contact;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class EmailDialog extends JDialog {
@@ -31,9 +35,14 @@ public class EmailDialog extends JDialog {
         this.categories = categories;
         this.contacts = contacts;
         currentType = Types.EMAIL;
+        ChangeListener changeListener = new ChangeListener();
         setDisplayTextArea();
 
         //Add listeners
+        //TextFields
+        age1Field.addKeyListener(changeListener);
+        age2Field.addKeyListener(changeListener);
+
         //Buttons
         emailButton.addActionListener(actionEvent -> {
             currentType = Types.EMAIL;
@@ -51,20 +60,24 @@ public class EmailDialog extends JDialog {
             currentType = Types.ADDRESS;
             setDisplayTextArea();
         });
+        buttonOK.addActionListener(actionEvent -> dispose());
 
         //Checkbox
         ageCheckBox.addActionListener(actionEvent -> {
             boolean setEnabled = false;
             if (ageCheckBox.isSelected()) setEnabled = true;
+            else setDisplayTextArea();
             age1Field.setEnabled(setEnabled);
             age2Field.setEnabled(setEnabled);
         });
+        allContactsCheckBox.addActionListener(actionEvent -> setDisplayTextArea());
 
         //Create window
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
         setPreferredSize(new Dimension(500, 350));
+        setResizable(true);
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -85,6 +98,33 @@ public class EmailDialog extends JDialog {
             }
         }
         displayTextArea.setText(displayTemp.toString());
+        setButtonStates();
+        StringSelection stringSelection = new StringSelection(displayTemp.toString());
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
+    }
+
+    private void setButtonStates() {
+        boolean email, mobile, home, address;
+        email = mobile = home = address = true;
+        switch (currentType) {
+            case EMAIL:
+                email = false;
+                break;
+            case MOBILE:
+                mobile = false;
+                break;
+            case HOME:
+                home = false;
+                break;
+            case ADDRESS:
+                address = false;
+                break;
+        }
+        emailButton.setEnabled(email);
+        mobileButton.setEnabled(mobile);
+        homeButton.setEnabled(home);
+        addressButton.setEnabled(address);
     }
 
     private String getInfo(Contact contact) {
@@ -118,6 +158,13 @@ public class EmailDialog extends JDialog {
         if (!age1Field.getText().equals("") && age2Field.getText().equals(""))
             return age >= Integer.parseInt(age1Field.getText());
         else return age <= Integer.parseInt(age2Field.getText());
+    }
+
+    private class ChangeListener extends KeyAdapter {
+        @Override
+        public void keyReleased(KeyEvent e) {
+            setDisplayTextArea();
+        }
     }
 
     private enum Types {
