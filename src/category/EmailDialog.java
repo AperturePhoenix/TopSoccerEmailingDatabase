@@ -160,14 +160,14 @@ public class EmailDialog extends JDialog {
         else return age <= Integer.parseInt(age2Field.getText());
     }
 
+    private enum Types {
+        EMAIL, HOME, MOBILE, ADDRESS
+    }
+
     private class ChangeListener extends KeyAdapter {
         @Override
         public void keyReleased(KeyEvent e) {
             setDisplayTextArea();
         }
-    }
-
-    private enum Types {
-        EMAIL, HOME, MOBILE, ADDRESS
     }
 }

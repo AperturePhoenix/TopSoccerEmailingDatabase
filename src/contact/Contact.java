@@ -106,6 +106,10 @@ public class Contact implements Serializable, Comparable<Contact> {
         return address;
     }
 
+    void setAddress(String address) {
+        this.address = address;
+    }
+
     String getMother() {
         return mother;
     }
@@ -120,10 +124,6 @@ public class Contact implements Serializable, Comparable<Contact> {
 
     void setFather(String father) {
         this.father = father;
-    }
-
-    void setAddress(String address) {
-        this.address = address;
     }
 
     public void addCategory(String category) {
