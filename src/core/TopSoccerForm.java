@@ -31,6 +31,7 @@ public class TopSoccerForm {
         //Add panels
         tabbedPane.add("Contacts", contactPanel.getPanel());
         tabbedPane.add("Categories", categoryPanel.getPanel());
+        tabbedPane.add("?", new InfoForm().getContentPanel());
 
         //Create window
         JFrame frame = new JFrame(TITLE);

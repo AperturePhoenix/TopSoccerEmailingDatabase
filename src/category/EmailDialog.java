@@ -91,8 +91,8 @@ public class EmailDialog extends JDialog {
                 if (tempContact.isInCategory(tempCategory) || allContactsCheckBox.isSelected()) {
                     if (ageCheckBox.isSelected()) {
                         if (isWithinAgeRange(tempContact))
-                            displayTemp.append(getInfo(tempContact)).append("\n");
-                    } else displayTemp.append(getInfo(tempContact)).append("\n");
+                            displayTemp.append(getInfo(tempContact)).append(" " + System.lineSeparator());
+                    } else displayTemp.append(getInfo(tempContact)).append(" " + System.lineSeparator());
                     break;
                 }
             }

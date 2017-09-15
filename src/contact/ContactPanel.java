@@ -55,7 +55,10 @@ public class ContactPanel implements ListManager.ListPanel {
         searchField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent keyEvent) {
-                contactManager.search((contact) -> !contact.toString().toUpperCase().contains(searchField.getText().toUpperCase()) && !contact.getEmail().toUpperCase().contains(searchField.getText().toUpperCase()));
+                String tempSearch = searchField.getText().toUpperCase();
+                contactManager.search((contact) -> !contact.toString().toUpperCase().contains(tempSearch) &&
+                        !contact.getMother().toUpperCase().contains(tempSearch) &&
+                        !contact.getFather().toUpperCase().contains(tempSearch));
             }
         });
 
@@ -69,6 +72,12 @@ public class ContactPanel implements ListManager.ListPanel {
         deleteContactButton.addActionListener(actionEvent -> contactManager.remove(contactList.getSelectedValue()));
 
         //Lists
+        contactList.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_DELETE) contactManager.remove(contactList.getSelectedValue());
+            }
+        });
         contactList.addListSelectionListener(listSelectionEvent -> {
             currentContact = contactList.getSelectedValue();
             setContactDescriptions();

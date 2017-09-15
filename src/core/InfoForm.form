@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="core.InfoForm">
+  <grid id="27dc6" binding="contentPane" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="2e84" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <text value="Created By Lance Judan and Sam Kramer"/>
+        </properties>
+      </component>
+      <scrollpane id="959c6">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="40416" class="javax.swing.JTextArea" binding="contactTabSearchingFirstTextArea" default-binding="true">
+            <constraints/>
+            <properties>
+              <editable value="false"/>
+              <font size="14"/>
+              <lineWrap value="true"/>
+              <text value="----Contact Tab-----&#10;Searching:&#10;-First and last name&#10;-Mother's name&#10;-Father's name&#10;&#10;Contact List:&#10;-Contacts can be quickly deleted by pressing the delete key&#10;&#10;Contact Information Section:&#10;-Current age of the contact will be displayed next to the name&#10;&#10;&#10;----Categories Tab----&#10;New Category Window:&#10;-Contact selection is toggled so that control does not need to be held down while adding more than one contact&#10;&#10;Getting Info:&#10;-Information will automatically be added to the clipboard&#10;-You can also copy to clipboard manually by highlighting the information"/>
+            </properties>
+          </component>
+        </children>
+      </scrollpane>
+      <vspacer id="a9439">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>
